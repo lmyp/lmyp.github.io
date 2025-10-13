@@ -30,6 +30,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vConsole/3.15.1/vconsole.min.js"></script>
   <script>window.vConsole = new window.VConsole();</script>
   <script>
+      HWH5.checkJsApi({
+      jsApiList: ['navigateToWecode'] // 列举需要调用的API
+    }).then(data => {
+      console.log('是否可用',data);
+    }).catch(error => {
+      console.log('是否可用err:',error);
+    });
     // 测试环境按钮点击事件
     document.getElementById('btn1').addEventListener('click', function () {
       console.log('点击了测试环境的跳转1');
@@ -37,7 +44,7 @@
     });
 
     document.getElementById('btn2').addEventListener('click', function () {
-      console.log('点击了测试环境的跳转22222', HWH5);
+      console.log('点击了测试环境的跳转22222', HWH5, HWH5.navigateToWecode);
       HWH5.navigateToWecode({
         uri: 'h5://20250821143900356345010/html/index.html',
       }).catch(error => {
@@ -104,4 +111,5 @@
 </body>
 
 </html>
+
 
