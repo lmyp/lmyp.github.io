@@ -1,11 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  <div>你好</div>
+  <div>
+    <p>测试</p>
+    <button id="btn1">跳转1</button>
+    <button id="btn2">跳转2</button>
+    <button id="btn3">跳转3</button>
+    <button id="btn4">跳转4</button>
+    <p>生产</p>
+    <button id="btn5">跳转1</button>
+    <button id="btn6">跳转2</button>
+    <button id="btn7">跳转3</button>
+    <button id="btn8">跳转4</button>
+    <p></p>
+    <button id="btn9">跳转百度</button>
+  </div>
+
+  <!-- 直接引用官方提供的hwh5-cloudonline.js，也可根据自己需要新建一个本地文件来引用-->
+  <script src="https://open-doc.welink.huaweicloud.com/docs/jsapi/2.0.12/hwh5-cloudonline.js"></script>
+
+  <!-- 引入Vconsole用于调试，生产环境时请去掉 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vConsole/3.15.1/vconsole.min.js"></script>
+  <script>window.vConsole = new window.VConsole();</script>
+  <script>
+    // 测试环境按钮点击事件
+    document.getElementById('btn1').addEventListener('click', function () {
+      console.log('点击了测试环境的跳转1');
+      window.location.href = 'h5://20250821143900356345010/html/index.html'
+    });
+
+    document.getElementById('btn2').addEventListener('click', function () {
+      console.log('点击了测试环境的跳转2');
+      HWH5.navigateToWecode({
+        uri: 'h5://20250821143900356345010/html/index.html',
+      }).catch(error => {
+        console.log('----------- error', error);
+      });
+    });
+
+    document.getElementById('btn3').addEventListener('click', function () {
+      console.log('点击了测试环境的跳转3');
+      HWH5.navigateToWecode({
+        uri: 'h5://20250821143900356345010.debug/html/index.html',
+      }).catch(error => {
+        console.log('----------- error', error);
+      });
+    });
+
+    document.getElementById('btn4').addEventListener('click', function () {
+      console.log('点击了测试环境的跳转4');
+      HWH5.navigateToWecode({
+        uri: 'h5://20250821143900356345010.dev.debug/html/index.html',
+      }).catch(error => {
+        console.log('----------- error', error);
+      });
+    });
+
+    // 生产环境按钮点击事件
+    document.getElementById('btn5').addEventListener('click', function () {
+      console.log('点击了生产环境的跳转5');
+      window.location.href = 'h5://20250804100341234067760/html/index.html'
+    });
+    document.getElementById('btn6').addEventListener('click', function () {
+      console.log('点击了生产环境的跳转6');
+      HWH5.navigateToWecode({
+        uri: 'h5://20250804100341234067760/html/index.html',
+      }).catch(error => {
+        console.log('----------- error', error);
+      });
+    });
+
+    document.getElementById('btn7').addEventListener('click', function () {
+      console.log('点击了生产环境的跳转7');
+      // 跳转逻辑示例：window.location.href = '生产跳转2的地址';
+      HWH5.navigateToWecode({
+        uri: 'h5://20250804100341234067760.debug/html/index.html',
+      }).catch(error => {
+        console.log('----------- error', error);
+      });
+    });
+
+    document.getElementById('btn8').addEventListener('click', function () {
+      console.log('点击了生产环境的跳转8');
+      HWH5.navigateToWecode({
+        uri: 'h5://20250804100341234067760.dev.debug/html/index.html',
+      }).catch(error => {
+        console.log('----------- error', error);
+      });
+    });
+
+     document.getElementById('btn9').addEventListener('click', function () {
+      console.log('点击了生产环境的跳转9');
+      window.location.href = 'https://www.baidu.com'
+    });
+  </script>
 </body>
+
 </html>
